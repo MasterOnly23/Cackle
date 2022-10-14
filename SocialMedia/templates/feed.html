@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block content %}
+
+{% for post in posts %}
+
+<article>
+    <div class="container-article">
+        <a href="{% url 'profile' post.user.username %}"><img src="{{ post.user.profile.image.url }}"></a>
+        <div>
+            <h2 class="username"><a href="{% url 'profile' post.user.username %}">@{{ post.user.username }}</a></h2> <!--pasamos el username como argunto a la url para que nos muestre el perfil del usuario que hizo el post-->
+            <i class="clock"></i>
+            <time data-time="#">{{ post.timestamp|naturaltime }}</time>
+            <div class="post">{{ post.content }}</div>
+        </div>
+    </div>
+</article>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'feed.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block profile %} <a class="profile" href="{% url 'my_data' %}">Account</a>{% endblock profile %}
+
+{% block content %}
+
+
+
+<!-- Profile -->
+<div class="profile">
+
+		<img src="{{ user.profile.image.url}}">
+		<h2>@{{ user.username }}</h2>
+
+		{% if request.user.is_authenticated %}  <!--preguntamos si el usuario esta logeado-->
+			{% if user.username != request.user.username %} <!--preguntamos si el perfil del usuario el el mismo el del usuario logueado o no-->
+				{% if user not in request.user.profile.following %} <!--aqui preguntamos si el usuario esta en nuestra lista de seguidos, si lo esta que muestre el btn unfollow y si no lo esta que muestre el btn follow-->
+					<button><a class="follow-button" href="{% url 'follow' user %}">Follow</a></button>
+				{% else %}
+					<button><a class="follow-button" href="{% url 'unfollow' user %}">Unfollow</a></button>
+				{% endif %}
+			{% endif %}
+
+		{% endif %}
+</div>
+
+<!-- Follow items -->
+<div class="follow">
+	<div>
+		<h5>Post</h5>
+		<p>{{ user.posts.count }}</p> <!--con el metodo count accedemos al numero de post que ha hecho el usuario-->
+	</div>
+	<div>
+		<h5>Followers</h5>
+		<p>{{ user.profile.followers.count }}</p> <!--hacemos una cuenta de los datos de la tabla de la db-->
+
+	</div>
+	<div>
+		<h5>Following</h5>
+		<p>{{ user.profile.following.count }}</p>
+	</div>
+</div>
+
+
+{{ block.super }}
+<!-- block super  para extender todo el contenido del template padre incluyendo los blockcontent y las extensiones-->
+{% endblock %}

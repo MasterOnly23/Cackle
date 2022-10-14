@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+
+{% block content %} 
+<link rel="stylesheet" href="{% static 'style2.css' %}">
+    <div class="data" id="data">
+        <img src="{{ user.profile.image.url}}" id="img-avatar">
+            <h2 class="label-data-title">Name: </h2><p class="label-data">{{ user.username }}</p>
+            <h2 class="label-data-title">Email: </h2><p class="label-data">{{ user.email }}</p>
+            <h2 class="label-data-title">First Name: </h2><p class="label-data">{{ user.first_name }}</p>
+            <h2 class="label-data-title">Last Name: </h2><p class="label-data">{{ user.last_name }}</p> 
+            <h2 class="label-data-title">Country: </h2><p class="label-data">{{ user.country }}</p>        
+    </div> 
+    <br>
+    <br>
+    <br>
+    <div>
+        <a href="{% url 'edit_profile' %}" class="edit ">Edit Profile</a>
+        <a href="{% url 'edit_avatar' %}" class="edit-avatar">Edit Avatar</a>
+    </div>
+
+{% endblock %}

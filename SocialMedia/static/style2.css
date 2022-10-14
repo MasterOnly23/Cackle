@@ -1,0 +1,49 @@
+  
+  .main .data{
+    margin-inline-start: 40%;
+  }
+  
+  .label-data-title{
+    width: fit-content;
+    border-bottom: 2px solid black;
+    font-size: 1.5rem;
+  }
+  
+  .label-data{
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    width: fit-content;
+    margin-inline-start: 3rem;
+  }
+
+.edit{
+    color: black;
+    margin-inline-start: 40%;
+    border: 2px solid black;
+    background-color: rgba(98,101,233,0.7);
+    padding: 8px;
+    border-radius: 2rem;
+}
+
+.edit:hover{
+  background-color: rgba(98,101,233,1);
+}
+
+.edit-avatar{
+    color: black;
+    margin-inline-start: 3rem;
+    border: 2px solid black;
+    background-color: rgba(98,101,233,0.7);
+    padding: 8px;
+    border-radius: 2rem;
+}
+
+.edit-avatar:hover{
+  background-color: rgba(98,101,233,1);
+}
+
+#img-avatar{
+  height: 16rem;
+  width: 16rem;
+  margin-right: 7rem;
+  border-radius: 50%;
+}

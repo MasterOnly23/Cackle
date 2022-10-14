@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<form class="form" method="POST"> {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit" id="submit" >Save</button>
+
+</form>
+
+
+{% endblock %}
