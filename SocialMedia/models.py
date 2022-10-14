@@ -1,7 +1,5 @@
 
-from random import choices
 from time import timezone
-from turtle import pos
 import django
 from django.db import models
 from django.contrib.auth.models import User
