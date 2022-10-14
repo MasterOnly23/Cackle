@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vo60uqkar7-&xb9wq#5+s2%e2u^t@ikm8l8@hsy&seco^mzoel
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'RedSocial.urls'
@@ -140,5 +141,17 @@ LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+
+
+os.makedirs(STATIC_TMP, exist_ok= True)
+os.makedirs(STATIC_ROOT, exist_ok= True)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
