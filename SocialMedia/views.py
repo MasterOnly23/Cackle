@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 # Create your views here.
 
 
@@ -19,6 +20,7 @@ def index(request):
 def feed(request):
     posts = Post.objects.all()
     return render(request, 'feed.html', {'posts':posts})
+
 
 def register(request):
     if request.method == 'POST':
@@ -132,3 +134,18 @@ def edit_avatar(request):
         form = AvatarForm()
 
     return render(request, 'edit_avatar.html', {'form': form})
+
+
+@login_required
+def edit_pass(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ChangePasswordForm(data = request.POST, user = request.user)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return render(request, 'profile.html')
+
+    else:
+        form = ChangePasswordForm(user = request.user)
+    return render(request, 'edit_pass.html', {'form': form, 'usuario': user})

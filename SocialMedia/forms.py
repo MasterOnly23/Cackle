@@ -89,3 +89,14 @@ class AvatarForm(forms.Form):
     class Meta:
         model = Profile
         fields = ['avatar']
+
+
+class ChangePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(label="Old Password", widget= forms.PasswordInput())
+    new_password1 = forms.CharField(label="New Password",widget= forms.PasswordInput())
+    new_password2 = forms.CharField(label="Repeat New Password",widget= forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ['old_password', 'new_password1', 'new_password2']
+        help_texts = {k:"" for k in fields}

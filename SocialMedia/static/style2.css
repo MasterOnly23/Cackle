@@ -17,7 +17,7 @@
 
 .edit{
     color: black;
-    margin-inline-start: 40%;
+    margin-inline-start: 35%;
     border: 2px solid black;
     background-color: rgba(98,101,233,0.7);
     padding: 8px;
@@ -40,6 +40,20 @@
 .edit-avatar:hover{
   background-color: rgba(98,101,233,1);
 }
+
+.edit-pass{
+  color: black;
+  margin-inline-start: 3rem;
+  border: 2px solid black;
+  background-color: rgba(98,101,233,0.7);
+  padding: 8px;
+  border-radius: 2rem;
+}
+
+.edit-pass:hover{
+  background-color: rgba(98,101,233,1);
+}
+
 
 #img-avatar{
   height: 16rem;

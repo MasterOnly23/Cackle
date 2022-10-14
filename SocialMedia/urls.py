@@ -21,6 +21,7 @@ urlpatterns = [
     path('my_data', my_data, name='my_data'),
     path('edit_profile/', edit_profile, name='edit_profile'),
     path('edit_avatar/', edit_avatar, name='edit_avatar'),
+    path('edit_pass/', edit_pass, name='edit_pass'),
 
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
