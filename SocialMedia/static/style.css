@@ -328,8 +328,22 @@ img.profile{
   justify-content: center;
 }
 
+.container-title-index{
+  display: flex;
+}
 
+.container-title2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
 
+#title-index{
+  justify-items: center;
+  align-items: center;
+  font-size: 2rem;
+}
 
 /*Media Queries*/
 @media (max-width: 786px) {
