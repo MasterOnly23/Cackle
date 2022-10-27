@@ -149,3 +149,42 @@ def edit_pass(request):
     else:
         form = ChangePasswordForm(user = request.user)
     return render(request, 'edit_pass.html', {'form': form, 'usuario': user})
+
+
+@login_required
+def delete_post(request, id_post):
+    user = request.user
+    post = Post.objects.get(pk=id_post)
+    post.delete()
+    posts = Post.objects.all()
+    messages.error(request, "Deleted post")
+
+    return render(request, 'feed.html', {'posts':posts})
+
+@login_required
+def edit_post(request, id_post):
+    post = Post.objects.filter(id=id_post).first()
+    form = PostForm(instance=post)
+
+    return render(request, 'edit_post.html', {'form':form, 'post':post})
+
+
+@login_required
+def update_post(request, id_post):
+    post = Post.objects.get(pk=id_post)
+    form = PostForm(request.POST, instance=post)
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user #asignamos el post al usuario loggeado
+            post.save()
+            messages.success(request, 'Post created correctly')
+            return redirect('feed')
+    else:
+        form = PostForm()
+
+    posts = Post.objects.all()
+
+    return render(request, 'feed.html', {'posts':posts})

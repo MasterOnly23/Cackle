@@ -181,6 +181,10 @@ time {
 	font-size: .94rem;
 }
 
+#link-post-edit{
+  margin-right: 2rem;
+}
+
 /* PROFILE */
 .profile{
 	display: flex;

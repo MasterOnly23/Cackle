@@ -145,7 +145,7 @@ a{
 article{
 	width: 93%;
 	margin: auto;
-	padding: 40px 0;
+	padding: 40px 0 2px 0;
 	border-bottom: 2px solid #ECEEEF;
 }
 
@@ -180,6 +180,7 @@ time {
 .post{
 	font-size: .94rem;
 }
+
 
 /* PROFILE */
 .profile{
@@ -261,6 +262,10 @@ button#submit {
   transition: .35s linear;
 }
 
+.delete{
+  background-color: transparent;
+}
+
 select#id_country{
   margin-left: 0.6rem;
 }
@@ -288,6 +293,14 @@ button#submit:hover {
   margin-bottom: 20px;
 }
 
+.notification-warning{
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.9rem;
+  background: #c1d320;
+}
 
 
 /*Footer*/

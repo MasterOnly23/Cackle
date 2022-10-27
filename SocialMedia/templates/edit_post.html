@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form action="{% url 'update_post' post.id %}" method="POST"> {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit" class="post">Post</button>
+
+</form>
+
+{% endblock %}
