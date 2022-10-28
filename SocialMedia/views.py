@@ -18,8 +18,9 @@ def index(request):
 
 @login_required
 def feed(request):
+    user = request.user
     posts = Post.objects.all()
-    return render(request, 'feed.html', {'posts':posts})
+    return render(request, 'feed.html', {'posts':posts, 'user':user})
 
 
 def register(request):
@@ -173,15 +174,10 @@ def edit_post(request, id_post):
 def update_post(request, id_post):
     post = Post.objects.get(pk=id_post)
     form = PostForm(request.POST, instance=post)
-    current_user = get_object_or_404(User, pk=request.user.pk)
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = current_user #asignamos el post al usuario loggeado
-            post.save()
-            messages.success(request, 'Post created correctly')
-            return redirect('feed')
+    if form.is_valid(): #si el formulario es valido
+        form.save()
+        messages.success(request, 'Post updated correctly')
+        return redirect('feed')
     else:
         form = PostForm()
 
