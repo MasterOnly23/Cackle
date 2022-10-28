@@ -20,7 +20,7 @@
 
         </div>
     </div>
-    {% if user == post.user %}
+    {% if request.user == post.user %}
         <div style="display: flex;display: flex;justify-content: flex-end;padding-right: 20px; ">
             <a href="{% url 'edit_post' post.id %}"><i class="fa-solid fa-pen-to-square " style="margin-right: 2rem;"></i></a>
             
